@@ -1,0 +1,29 @@
+class Node {
+    int data;    // Поле данных
+    Node next;   // Ссылка на следующий элемент
+    Node(int data) { this.data = data; this.next = null; }
+}
+
+public class OddList {
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5};  // Исходный массив чисел
+        Node head = null;         // Голова списка
+
+        // Перебираем массив
+        for (int num : arr) {
+            if (num % 2 != 0) {   // Если число нечётное
+                Node newNode = new Node(num);  // Создаём новый узел
+                newNode.next = head;           // Новый узел указывает на старую голову
+                head = newNode;                // Новый узел становится головой списка
+            }
+        }
+
+        // Выводим список
+        System.out.print("Список нечетных: ");
+        Node cur = head;
+        while (cur != null) {
+            System.out.print(cur.data + " ");  // Печатаем данные
+            cur = cur.next;                    // Переходим к следующему элементу
+        }
+    }
+}
