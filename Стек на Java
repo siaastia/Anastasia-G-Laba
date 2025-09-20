@@ -1,0 +1,23 @@
+import java.util.Stack;   // Импортируем класс Stack
+
+public class StackNumbers {
+    public static void main(String[] args) {
+        Stack<Integer> st = new Stack<>();   // Основной стек
+        Stack<Integer> div3 = new Stack<>(); // Стек для чисел, кратных 3
+
+        // Заполняем стек числами от 1 до 10
+        for (int i = 1; i <= 10; i++) {
+            st.push(i);   // Добавляем элемент в стек
+        }
+
+        // Проверяем все числа
+        while (!st.isEmpty()) {      // Пока стек не пуст
+            int val = st.pop();      // Достаём верхний элемент
+            if (val % 3 == 0) {      // Если число делится на 3
+                div3.push(val);      // Добавляем его в новый стек
+            }
+        }
+
+        System.out.println("Числа, кратные 3: " + div3);  // Вывод результата
+    }
+}
