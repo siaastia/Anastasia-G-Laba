@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+// Структура узла списка
+struct Node {
+    int data;   // Поле данных
+    Node* next; // Указатель на следующий элемент
+};
+
+int main() {
+    int arr[] = {1,2,3,4,5,6};  // Исходный массив
+    Node* head = nullptr;       // Указатель на голову списка
+
+    // Перебираем массив
+    for (int i = 0; i < 6; i++) {
+        if (arr[i] % 2 == 0) {                   // Если число чётное
+            Node* newNode = new Node{arr[i], head}; // Создаём новый узел и связываем с текущей головой
+            head = newNode;                      // Новый узел становится головой списка
+        }
+    }
+
+    // Вывод списка
+    cout << "Список четных: ";
+    Node* cur = head;
+    while (cur) {
+        cout << cur->data << " ";   // Печатаем данные узла
+        cur = cur->next;            // Переходим к следующему
+    }
+    cout << endl;
+
+    return 0;
+}
