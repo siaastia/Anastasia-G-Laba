@@ -1,0 +1,33 @@
+class Node {
+    String data;  // Поле данных (слово)
+    Node next;    // Ссылка на следующий элемент
+    Node(String data) { this.data = data; this.next = null; }
+}
+
+public class WordList {
+    public static void main(String[] args) {
+        String[] words = {"hi","world","cat","apple","ok"}; // Исходный массив слов
+        Node head = null, tail = null;  // Голова и хвост списка
+
+        // Перебираем массив слов
+        for (String w : words) {
+            if (w.length() > 3) {       // Если слово длиннее 3 букв
+                Node newNode = new Node(w); // Создаём новый узел
+                if (head == null) {         // Если список пуст
+                    head = tail = newNode;  // Новый элемент — первый и последний
+                } else {
+                    tail.next = newNode;    // Иначе добавляем в конец
+                    tail = newNode;         // Обновляем хвост
+                }
+            }
+        }
+
+        // Выводим список
+        System.out.print("Список слов >3 букв: ");
+        Node cur = head;
+        while (cur != null) {
+            System.out.print(cur.data + " "); // Печатаем слово
+            cur = cur.next;                   // Переход к следующему элементу
+        }
+    }
+}
