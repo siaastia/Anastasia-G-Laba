@@ -1,0 +1,22 @@
+public class ArrayWords {
+    public static void main(String[] args) {
+        String[] words = {"apple", "table", "orange", "dog", "umbrella", "car"};
+        // Исходный массив слов
+
+        StringBuilder vowels = new StringBuilder();     // Для слов на гласную
+        StringBuilder consonants = new StringBuilder(); // Для слов на согласную
+
+        // Перебираем каждое слово
+        for (String word : words) {
+            char first = Character.toLowerCase(word.charAt(0)); // Берём первую букву и переводим в нижний регистр
+            if ("aeiouy".indexOf(first) != -1) {                // Проверяем, гласная ли буква
+                vowels.append(word).append(" ");                // Добавляем слово в список гласных
+            } else {
+                consonants.append(word).append(" ");            // Добавляем слово в список согласных
+            }
+        }
+
+        System.out.println("Слова на гласную: " + vowels);     // Вывод слов на гласную
+        System.out.println("Слова на согласную: " + consonants); // Вывод слов на согласную
+    }
+}
