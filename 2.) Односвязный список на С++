@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Структура узла списка
+struct Node {
+    string data;  // Слово
+    Node* next;   // Указатель на следующий элемент
+};
+
+// Функция проверки первой буквы
+bool startsWithVowel(const string& word) {
+    char c = tolower(word[0]); // Переводим первую букву в нижний регистр
+    return (c=='a'||c=='e'||c=='i'||c=='o'||c=='u'||c=='y');
+}
+
+int main() {
+    string words[] = {"apple","dog","orange","tree","ice"}; // Исходный массив слов
+    Node* head = nullptr;  // Голова списка
+    Node* tail = nullptr;  // Хвост списка
+
+    // Перебираем массив слов
+    for (auto &w : words) {
+        if (startsWithVowel(w)) {             // Если слово начинается с гласной
+            Node* newNode = new Node{w, nullptr}; // Создаём новый узел
+            if (!head) {                       // Если список пуст
+                head = tail = newNode;         // Новый элемент становится первым и последним
+            } else {
+                tail->next = newNode;          // Иначе добавляем в конец
+                tail = newNode;                // Обновляем хвост
+            }
+        }
+    }
+
+    // Вывод списка
+    cout << "Слова на гласную: ";
+    Node* cur = head;
+    while (cur) {
+        cout << cur->data << " ";  // Печатаем слово
+        cur = cur->next;           // Переходим к следующему
+    }
+    cout << endl;
+
+    return 0;
+}
